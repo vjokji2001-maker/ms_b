@@ -1,0 +1,13 @@
+[Unit]
+Description=Smartcare HRMS Gateway service
+After=network.target syslog.target
+
+[Service]
+User=springuser
+ExecStart=java -jar /usr/local/microservice/gateway-service.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

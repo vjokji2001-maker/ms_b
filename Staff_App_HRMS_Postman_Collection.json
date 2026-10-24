@@ -1,0 +1,449 @@
+{
+  "info": {
+    "_postman_id": "c1f7823b-4789-4a4b-9271-9f931d8e1201",
+    "name": "PCS HRMS - Staff Mobile App APIs",
+    "description": "Complete Postman collection for PCS HRMS Staff & Mobile Self-Service (ESS) APIs, including Face Authentication & Location Geofencing Check-In/Check-Out, Dashboard, Leave, Roster, Holidays, Payroll, and Profile.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:9099/hr/staff",
+      "type": "string"
+    },
+    {
+      "key": "clinicid",
+      "value": "elitemedicity",
+      "type": "string"
+    },
+    {
+      "key": "empId",
+      "value": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🏠 Dashboard",
+      "item": [
+        {
+          "name": "1. Home Dashboard Overview",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/dashboard/overview?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["dashboard", "overview"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}",
+                  "description": "Employee UUID from login"
+                }
+              ]
+            },
+            "description": "Single call returning employee profile card, today's punch status, active shift timings, real leave balances, and upcoming holidays."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "⏱️ Attendance & Punch (Face + Geofence)",
+      "item": [
+        {
+          "name": "1. Check-In Punch (Location + Face)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empId\": \"{{empId}}\",\n  \"latitude\": 28.613939,\n  \"longitude\": 77.209021,\n  \"locationAddress\": \"Connaught Place, New Delhi\",\n  \"targetLatitude\": 28.613930,\n  \"targetLongitude\": 77.209020,\n  \"allowedRadiusMeters\": 200.0,\n  \"isRemotePunch\": false,\n  \"faceImageBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attendance/check-in",
+              "host": ["{{baseUrl}}"],
+              "path": ["attendance", "check-in"]
+            },
+            "description": "Staff Check-In punch with GPS geofencing radius validation and selfie photo capture."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Check-Out Punch (Location + Face)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empId\": \"{{empId}}\",\n  \"latitude\": 28.613939,\n  \"longitude\": 77.209021,\n  \"locationAddress\": \"Connaught Place, New Delhi\",\n  \"targetLatitude\": 28.613930,\n  \"targetLongitude\": 77.209020,\n  \"allowedRadiusMeters\": 200.0,\n  \"isRemotePunch\": false,\n  \"faceImageBase64\": \"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////wgALCAABAAEBAREA/8QAFBABAAAAAAAAAAAAAAAAAAAAAP/aAAgBAQABPxA=\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/attendance/check-out",
+              "host": ["{{baseUrl}}"],
+              "path": ["attendance", "check-out"]
+            },
+            "description": "Staff Check-Out punch with GPS geofencing and face verification."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Today's Attendance Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/attendance/today-status?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["attendance", "today-status"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Check whether employee is currently punched in, in-time, out-time, total working hours, and shift info."
+          },
+          "response": []
+        },
+        {
+          "name": "4. Punch History by Date",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/attendance/punch-history?empId={{empId}}&date=24/10/2026",
+              "host": ["{{baseUrl}}"],
+              "path": ["attendance", "punch-history"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                },
+                {
+                  "key": "date",
+                  "value": "24/10/2026",
+                  "description": "dd/MM/yyyy format (optional, defaults to today)"
+                }
+              ]
+            },
+            "description": "List all biometric and mobile punches recorded for a specific date."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🏖️ Leave Management",
+      "item": [
+        {
+          "name": "1. Check Leave Balance",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/leave/balance?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["leave", "balance"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Returns accrued, consumed, and remaining balance for each leave type (CL, SL, EL, etc.)."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Apply Leave",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empId\": \"{{empId}}\",\n  \"leaveNameId\": 1,\n  \"fromDate\": \"28/10/2026\",\n  \"fromDateType\": \"FULL_DAY\",\n  \"toDate\": \"29/10/2026\",\n  \"toDateType\": \"FULL_DAY\",\n  \"totalDays\": 2.0,\n  \"reason\": \"Family function / Urgent personal work\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/leave/apply",
+              "host": ["{{baseUrl}}"],
+              "path": ["leave", "apply"]
+            },
+            "description": "Submit a leave application with balance check and approval workflow."
+          },
+          "response": []
+        },
+        {
+          "name": "3. My Leave Requests History",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/leave/my-requests?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["leave", "my-requests"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "View all applied leave requests and their current approval statuses (Pending, Approved, Rejected)."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "🗓️ Shift Roster & Holidays",
+      "item": [
+        {
+          "name": "1. Monthly Shift Roster (Calendar)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/roster/monthly?empId={{empId}}&year=2026&month=10",
+              "host": ["{{baseUrl}}"],
+              "path": ["roster", "monthly"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                },
+                {
+                  "key": "year",
+                  "value": "2026"
+                },
+                {
+                  "key": "month",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Returns day-by-day shift schedule with weekoff and holiday indicators for the monthly calendar view."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Assigned Holidays List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/roster/holidays?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["roster", "holidays"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Returns company holidays assigned to this employee's calendar."
+          },
+          "response": []
+        },
+        {
+          "name": "3. Weekly Off Days",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/roster/weekly-off?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["roster", "weekly-off"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Returns list of recurring weekly off days (e.g. SUNDAY, SATURDAY)."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "💰 Payroll & Payslips",
+      "item": [
+        {
+          "name": "1. My Salary Slips List",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payroll/slips?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["payroll", "slips"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Lists all processed monthly payslips with Gross, Deductions, and Net Pay."
+          },
+          "response": []
+        },
+        {
+          "name": "2. Payslip Detailed Components",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/payroll/slip-details?empId={{empId}}&monthYear=2026-09",
+              "host": ["{{baseUrl}}"],
+              "path": ["payroll", "slip-details"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                },
+                {
+                  "key": "monthYear",
+                  "value": "2026-09",
+                  "description": "YYYY-MM format"
+                }
+              ]
+            },
+            "description": "Detailed breakdown of salary components (Basic, HRA, PF, ESIC, Tax, Net Pay) for a specific month."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "👤 Profile",
+      "item": [
+        {
+          "name": "1. Staff Profile Details",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "clinicid",
+                "value": "{{clinicid}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/profile?empId={{empId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["profile"],
+              "query": [
+                {
+                  "key": "empId",
+                  "value": "{{empId}}"
+                }
+              ]
+            },
+            "description": "Full staff profile including Personal info, Designation, Department, Branch, and Work Location."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

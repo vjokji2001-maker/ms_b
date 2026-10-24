@@ -1,0 +1,13 @@
+[Unit]
+Description=Smartcare HRMS Registry server
+After=network.target syslog.target
+
+[Service]
+User=springuser
+ExecStart=java -jar /usr/local/microservice/discovery-server.jar
+SuccessExitStatus=143
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

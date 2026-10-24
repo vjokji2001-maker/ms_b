@@ -1,0 +1,121 @@
+[33mabf2f51[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m create leave balance api
+[33m3240bc3[m attendance leave request service
+[33m21e5834[m changes
+[33m3e85a3d[m leave attendance common
+[33m8fd0bba[m hr-master removed unwanted comments
+[33m8df54cb[m hr-employee removed unwanted comments
+[33m92548a5[m hr-employee removed comments and headers changes
+[33m39957bf[m hr-master In year cycle removed grade entity
+[33m1c1dd38[m hr-attendance employee punch log API changes
+[33m27aa74f[m hr-master removed grade from year cycle
+[33mffaf189[m hr-master changes in message resource
+[33me5e6ed8[m hr-employee changes in message resource
+[33m5a28cbb[m changes in employee shift update api
+[33mfda1a34[m hr-attendance swipe approver minor changes
+[33m95fc4b1[m Merge remote-tracking branch 'origin/dev' into dev
+[33mf584e25[m add date in label and feild name
+[33m109dc0b[m altered the unused column from repository query
+[33m2f2a05f[m created swipe bulk approved API
+[33m69ee0ea[m In hr-employee replaced code with employee code dashboard keyword
+[33m43036dc[m add date in label and feild name
+[33m69762d2[m hr-employee implemented dynamic headers
+[33mc2d8bd8[m hr-attendance swipe day variable removed
+[33mef109f0[m hr-attendance swipe request and swipe approver bug fixes
+[33mebf456e[m hr-attendance swipe approver changes
+[33me16d0e7[m hr-attendance swipe approver changes
+[33m686d342[m removed unwanted imports
+[33m5944401[m change api endpoint path name
+[33m0e6021d[m hr-attendance swipe approver and swipe request refactoring
+[33m276a08b[m hr-attendance added repository method and entity changes
+[33mfcd2bc5[m Create conmverter class
+[33m6a24c9b[m RFACTORED Swipe request and approved code
+[33m95add39[m hr-attendance swipe approver changes
+[33maea2865[m hr-attendance swipe approver changes
+[33m1a4be59[m  created employee shift API
+[33mdda7d74[m hr-attendance added repository query for employee shift
+[33ma18958f[m hr-attendance swipe approver new validation
+[33m40bedb5[m common utils added repository method in approval group master, employee punch log and swipe approver changes
+[33m2f94e99[m hr-attendance employee punch log API created
+[33m882c754[m hr-employee smart care variable refactored
+[33m41b4151[m hr-employee entity variable refactored, swipe request created and modified date and time changes, created punch log repository
+[33m5996e90[m create scheduler for employee attendance
+[33me1667c9[m changes in employee shift dashboard dao
+[33m0f29157[m attendance dto,dao
+[33mcdcb559[m attendance enum
+[33mebba6ac[m Smart care save user API integration in hr employee attendance service added designation
+[33m5a7dddf[m Smart care save user API integration in hr employee attendance service
+[33m8a39673[m Smar care save user API integration in hr employee attendance service
+[33m90460a3[m Swipe Approver UPDATE API
+[33m722315f[m change  scheduler package
+[33m36d9347[m Merge remote-tracking branch 'origin/dev' into dev
+[33mabc4602[m Add clinic base scheduler in emp shift
+[33me078b5c[m created swipe approver UPDATE API and GET BY ID API
+[33m1cde997[m changes in  DateHelper utility method, added swipe approver projection and swipe approver repository query
+[33m42ab4cf[m changes in  DateHelper utility method, added swipe approver projection and swipe approver repository query
+[33mbae18e2[m Add Scheduler in emp shift
+[33m210e400[m Changes Emp shift and  shift template left join to inner join
+[33macf3df1[m Changes Emp shift and  shift template left join to inner join
+[33m6c580fa[m Created Swipe request approver dashboard API
+[33m220c858[m refactored
+[33m57e0fdb[m Completed Employee Swipe Request CRUD
+[33me522a99[m package refactored
+[33me3c8d58[m package refactored
+[33mb0c6ea0[m Changes made in  employee shift Dashboard api
+[33m1c3f4e3[m altered column name in employee swipe request
+[33mdd8b8da[m Created CREATE, UPDATE, DELETE And GET BY ID partially implemented
+[33mdee71e4[m Created Employee Daily punch logs entity and swipe request enums
+[33m469c5c1[m Implemented Employee swipe request Dashboard API and partially created Create API
+[33m98240a4[m Merge remote-tracking branch 'origin/dev' into dev
+[33mc548800[m Changes made in  employee shift update api
+[33m0f3c865[m Added employee swipe request and swipe request approver details table in sql file and created DTO
+[33mddeebf5[m Added employee swipe request and swipe request approver details entity in common utils
+[33ma8797a5[m Attendance package refactoring
+[33mc319245[m Attendance package refactoring
+[33mf701729[m Employee Shift changes
+[33m76f7846[m create employee shift dashboard method
+[33mdb27c50[m create employee shift uodate method
+[33m7350119[m Employee Shift package structure refactored
+[33m7fe90b1[m employee shift changes
+[33ma46d37b[m added attendance service module
+[33m1f524e4[m master service properties file formatting
+[33me40c42b[m employee service formatting
+[33m5a0328e[m attendance service configuration in Gateway
+[33mcaec5a8[m Created attendance service
+[33mcb28020[m Created attendance service
+[33mcd92b65[m Package correction
+[33m07de622[m In Gateway properties file added space
+[33ma0a4ac9[m country code changes in GET API
+[33mfeae9cc[m Added leave template in employee config dashboard api
+[33m93d8c7e[m Add leave template in employee config dashboard api
+[33m941323b[m Add leva template in employee config dashboard api
+[33m49f59c5[m add leaveTemplate Id in employee Leave setting
+[33mc9de8b4[m Add leva template in employee config dashboard api
+[33m5435f8d[m Implemented time helper utility methods in shift template master
+[33m5485f44[m add leave template name in dashboard api
+[33m2fb2416[m add leaveTemplate Id in employee Leave setting
+[33m798b045[m add leaveTemplate Id in employee Leave setting
+[33ma51da7d[m Added country code in employee registration
+[33m2dba547[m Added country code in company master
+[33mf636400[m Enum modifications
+[33mcf1e2a9[m Renamed from Product to Master Service Route
+[33md8e0cae[m Added a Payment method ENUM in employee-service and changed file upload server base url port to 9090
+[33mcc52778[m Replaced getters and setter with builder pattern
+[33mec0beb4[m Replaced getters and setter with builder pattern
+[33m764fab3[m changes in gateway application.properties and master application.properties
+[33m7108a04[m Merge branch 'dev' of https://gitlab.com/my-techie-group/hrms-microcervices into dev
+[33m5f61742[m Edit EmployeeServiceApplication.java
+[33m50ce5e3[m Edit pom.xml
+[33mfc917a1[m Edit application.properties
+[33mac64483[m Edit application.properties
+[33m0dc9c55[m Reapply "refactor period package under attendance package"
+[33m636e470[m Revert "refactor period package under attendance package"
+[33m1f38ca2[m refactor period package under attendance package and name correction Employee service main application
+[33mafa0e0b[m refactor period package under attendance package and name correction Employee service main application
+[33ma752369[m servicemd file
+[33m8f43191[m partial pom resturctured
+[33m191a3e9[m Added a condition in employee registration service
+[33m39c41d5[m logging rotation and capturing
+[33m92cf8af[m gateway service, discovery server,eureka client and service
+[33m36f68aa[m package changes
+[33me8f2379[m INITIAL COMMIT
+[33m349a988[m[33m ([m[1;31morigin/staging[m[33m, [m[1;31morigin/production[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Initial commit
