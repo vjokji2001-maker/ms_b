@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 @Slf4j
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/attendance")
 public class StaffAttendanceController {

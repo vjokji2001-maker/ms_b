@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Slf4j
-@CrossOrigin
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/payroll")
 public class StaffPayrollController {
